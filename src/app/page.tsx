@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <>
+    <div className="flex flex-row w-full h-full relative">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -17,6 +17,6 @@ export default function Home() {
       >
       Conntent Hero
       </motion.div>
-    </>
+    </div>
   );
 }
