@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="flex flex-row w-full h-full relative">
+    <div className="flex flex-col w-full h-full">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -15,7 +15,11 @@ export default function Home() {
         }}
         className="text-2xl"
       >
-      Conntent Hero
+        OCONTEN
+        <div className="w-full h-[400px] bg-red-300"></div>
+        <div className="w-full h-[400px] bg-red-200"></div>
+        <div className="w-full h-[400px] bg-red-300"></div>
+        <div className="w-full h-[400px] bg-red-200"></div>
       </motion.div>
     </div>
   );

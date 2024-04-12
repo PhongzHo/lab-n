@@ -1,11 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import React, { useEffect, useState, useRef } from 'react'
 // import Image from 'next/image'
 // import logo from '/public/images/lab.png'
 import Text from '@/modules/components/text'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { cn } from "@/lib/utils";
 import { motion, useAnimationControls } from 'framer-motion'
 import Hamburger from 'hamburger-react'
 
@@ -60,48 +59,52 @@ export default function Nav() {
             containerControls.start("close")
         }
     }, [isOpen])
+
     const handleOpenClose = () => {
         setOpen(!isOpen)
     }
-    const menuRef = useRef(null)
-    useEffect(() => {
-        let handler = (e: any) => {
-            if (isOpen && !menuRef?.current?.contains(e.target)){
-                setOpen(false)
-            }
-        }
-        document.addEventListener("mousedown", handler)
-    }, [isOpen])
-
 
     return (
         <>
-            <motion.nav
-                variants={containerVariants}
-                initial="close"
-                animate={containerControls}
-                ref={menuRef}
-                className='bg-neutral-900 flex flex-col z-10 gap-20 absolute top-0 right-0 h-full shadow shadow-neutral-500'>
-                <motion.div
-                    className='flex flex-col w-full justify-between place-items-start'>
-                    <ul className='ml-4 pt-10'>
-                        {links.map(link => {
-                            return (
-                                <li key={link.path} className='py-4 '>
-                                    <Link href={link.path} className='text-red-400'>
-                                        {link.name}
-                                    </Link>
-                                </li>
-                            )
-                        })}
-                    </ul>
-                </motion.div>
-            </motion.nav>
-            <Hamburger color='black' size={20} duration={0.3} rounded={true} toggled={isOpen} onToggle={setOpen} />
+            
         </>
+
     )
 }
 
+// <div className='bg-rose-600 flex justify-center text-xs text-white'>
+//                 <Text content={'Rất hân hạnh được phục vụ bạn 🥰'} className='m-1' />
+//             </div>
+//             <div className='border-b-[1px] border-slate-300 shadow-black/50 shadow-sm'>
+//                 {/* Nav */}
+//                 <div className='md:hidden flex justify-between'>
+//                     <Hamburger color='black' size={20} duration={0.3} rounded={true} toggled={isOpen} onToggle={handleOpenClose} />
+//                     <motion.nav
+//                         variants={containerVariants}
+//                         initial="close"
+//                         animate={containerControls}
+//                         className='bg-neutral-900 flex flex-col z-50 gap-20 absolute top-0 right-0 h-full'>
+//                         <motion.div
+//                             className='flex flex-col w-full justify-between place-items-start'>
+//                             <ul className='ml-4 pt-10'>
+//                                 {links.map(link => {
+//                                     return (
+//                                         <li key={link.path} className='py-4 '>
+//                                             <Link href={link.path} className='text-red-400'>
+//                                                 {link.name}
+//                                             </Link>
+//                                         </li>
+//                                     )
+//                                 })}
+//                             </ul>
+//                         </motion.div>
+//                     </motion.nav>
+                    
+//                 </div>
+//             </div>
+
+
+// Cach use cn
 {/* <MotionLink
                                 href={link.path}
                                 className={cn('font-medium transition-all duration-500 ease-out hover:text-rose-500'
@@ -112,9 +115,7 @@ export default function Nav() {
                                 </motion.span>
                             </MotionLink> */}
 
-{/* <div className='bg-rose-600 flex justify-center text-xs text-white'>
-                <Text content={'Rất hân hạnh được phục vụ bạn 🥰'} className='m-1' />
-            </div> */}
+
 
 // <div className='md:h-[80px] h-[40px] bg-black font-extrabold flex justify-between'>
 //                 <Text content={'LAB Billiards'} className='font-semibold md:text-3xl md:mt-4 text-yellow-100 p-2 cursor-default' />
