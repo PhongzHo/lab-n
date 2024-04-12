@@ -66,43 +66,50 @@ export default function Nav() {
 
     return (
         <>
-            
+            <nav className='flex justify-between items-center bg-gradient-to-r from-slate-900 to-slate-700 p-4 text-white'>
+                <div>
+                    <div className='w-16 cursor-pointer'>LOGO</div>
+                </div>
+                <div className='duration-500 md:static absolute md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  w-full flex items-center px-5'>
+                    <ul className='flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8'>
+                        {links.map((link) => {
+                            return (
+                                <li key={link.path}>
+                                    <Link href={link.path}>{link.name}</Link>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </div>
+                <div className='flex items-end'>
+                    <div className='md:hidden z-10 flex'>
+                        <Hamburger color='red' size={20} duration={0.3} rounded={true} toggled={isOpen} onToggle={handleOpenClose} />
+                    </div>
+                    <motion.nav
+                        variants={containerVariants}
+                        initial="close"
+                        animate={containerControls}
+                        className='bg-gradient-to-l from-slate-500 to-slate-800 flex flex-col border-l-[1px] border-white/25 drop-shadow-xl shadow-slate-600 gap-20 absolute top-0 right-0 h-full'>
+                        <motion.div
+                            className='flex flex-col w-full justify-between place-items-start'>
+                            <ul className='ml-4 pt-10'>
+                                {links.map(link => {
+                                    return (
+                                        <li key={link.path} className='py-4 '>
+                                            <Link href={link.path} className='text-red-400'>
+                                                {link.name}
+                                            </Link>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </motion.div>
+                    </motion.nav>
+                </div >
+            </nav >
         </>
-
     )
 }
-
-// <div className='bg-rose-600 flex justify-center text-xs text-white'>
-//                 <Text content={'Rất hân hạnh được phục vụ bạn 🥰'} className='m-1' />
-//             </div>
-//             <div className='border-b-[1px] border-slate-300 shadow-black/50 shadow-sm'>
-//                 {/* Nav */}
-//                 <div className='md:hidden flex justify-between'>
-//                     <Hamburger color='black' size={20} duration={0.3} rounded={true} toggled={isOpen} onToggle={handleOpenClose} />
-//                     <motion.nav
-//                         variants={containerVariants}
-//                         initial="close"
-//                         animate={containerControls}
-//                         className='bg-neutral-900 flex flex-col z-50 gap-20 absolute top-0 right-0 h-full'>
-//                         <motion.div
-//                             className='flex flex-col w-full justify-between place-items-start'>
-//                             <ul className='ml-4 pt-10'>
-//                                 {links.map(link => {
-//                                     return (
-//                                         <li key={link.path} className='py-4 '>
-//                                             <Link href={link.path} className='text-red-400'>
-//                                                 {link.name}
-//                                             </Link>
-//                                         </li>
-//                                     )
-//                                 })}
-//                             </ul>
-//                         </motion.div>
-//                     </motion.nav>
-                    
-//                 </div>
-//             </div>
-
 
 // Cach use cn
 {/* <MotionLink
@@ -114,10 +121,3 @@ export default function Nav() {
                                     {link.name}
                                 </motion.span>
                             </MotionLink> */}
-
-
-
-// <div className='md:h-[80px] h-[40px] bg-black font-extrabold flex justify-between'>
-//                 <Text content={'LAB Billiards'} className='font-semibold md:text-3xl md:mt-4 text-yellow-100 p-2 cursor-default' />
-//                 {/* <Image src={logo} layout='reponsive' width={60} alt='Logo quán bida Lab Billiards Biên Hòa' className='bg-no-repeat bg-transparent'/> */}
-// </div>
